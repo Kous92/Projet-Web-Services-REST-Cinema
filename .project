@@ -28,11 +28,4 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>WebContent/WEB-INF/date_heure.js</name>
-			<type>1</type>
-			<location>/Users/Kous92/Documents/Web Services/Project/WebContent/date_heure.js</location>
-		</link>
-	</linkedResources>
 </projectDescription>

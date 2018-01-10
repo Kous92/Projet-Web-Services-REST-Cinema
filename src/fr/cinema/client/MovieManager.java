@@ -2,25 +2,25 @@ package fr.cinema.client;
 
 import java.io.*;
 import java.util.*;
-import fr.cinema.client.User;
+import fr.cinema.client.Movie;
 
-public enum UserManager 
+public enum MovieManager 
 {
 	instance;
 
-    private Map<String, User> contentProvider = new HashMap<>();
-    private File fichier = new File("user_database.txt") ;
+    private Map<String, Movie> contentProvider = new HashMap<>();
+    private File fichier = new File("movie_database.txt") ;
     private PrintWriter pw;
     private FileInputStream fis;
     private FileOutputStream fos;
     private byte[] bytesArray;
     private String str;
 
-    private UserManager() 
+    private MovieManager() 
     {
     		try 
     		{
-    			 fis = new FileInputStream("user_database.txt"); // Lecture
+    			 fis = new FileInputStream("movie_database.txt"); // Lecture
     			 fos = new FileOutputStream(fichier); // Écriture
 			
     			 if (!fichier.exists())
@@ -32,29 +32,26 @@ public enum UserManager
 			 {
 				 System.out.println("Le fichier est vide, ajout de 3 utilisateurs par défaut"); 
 				 
-				 User user = new User("1", "koussaila.ben.mamar@efrei.net", "koussaila");
-		         user.setIdentity("Koussaïla BEN MAMAR");
-		         contentProvider.put("1", user);
+				 Movie movie = new Movie("1", "Suicid Squad", "2h03", "David Ayer", "Anglais", "Français", "Will Smith");
+		         contentProvider.put("1", movie);
 		        
-		         str = user.getId() + ":" + user.getEmail() + ":" + user.getPassword() + ":" + user.getIdentity();
+		         str = movie.getId() + ":" + movie.getTitle() + ":" + movie.getDuration() + ":" + movie.getDirector();
 		         bytesArray = str.getBytes();
 		         fos.write(bytesArray);
 		   	  	 fos.flush();
 		         
-		         user = new User("2", "arthur.schickel@efrei.net", "arthur");
-		         user.setIdentity("Arthur SCHICKEL");
-		         contentProvider.put("2", user);
-		         
-		         str = user.getId() + ":" + user.getEmail() + ":" + user.getPassword() + ":" + user.getIdentity();
+		   	  	 movie = new Movie("2", "The Dark Knight Rises", "2h44", "Christopher Nolan", "Anglais", "Français", "Christian Bale");
+		         contentProvider.put("2", movie);
+		        
+		         str = movie.getId() + ":" + movie.getTitle() + ":" + movie.getDuration() + ":" + movie.getDirector();
 		         bytesArray = str.getBytes();
 		         fos.write(bytesArray);
 		   	  	 fos.flush();
-		         
-		         user = new User("3", "ibrahim.el.karrat@efrei.net", "ibrahim");
-		         user.setIdentity("IBRAHIM EL KARRAT");
-		         contentProvider.put("3", user);
-		         
-		         str = user.getId() + ":" + user.getEmail() + ":" + user.getPassword() + ":" + user.getIdentity();
+		   	  	 
+		   	  	 movie = new Movie("3", "Fast & Furious 7", "2h17", "James Wan", "Anglais", "Français", "Vin Diesel");
+		         contentProvider.put("3", movie);
+		        
+		         str = movie.getId() + ":" + movie.getTitle() + ":" + movie.getDuration() + ":" + movie.getDirector();
 		         bytesArray = str.getBytes();
 		         fos.write(bytesArray);
 		   	  	 fos.flush();
@@ -110,7 +107,7 @@ public enum UserManager
     		}
     }
     
-    public Map<String, User> getModel()
+    public Map<String, Movie> getModel()
     {
         return contentProvider;
     }

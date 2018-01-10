@@ -1,6 +1,6 @@
 package fr.cinema.client;
 
-import java.io.IOException;
+import java.io.*;
 
 import java.util.*;
 
@@ -22,7 +22,7 @@ public class UserServices
     UriInfo uriInfo;
     @Context
     Request request;
-
+    
     // Return the list of Users to the user in the browser
     @GET
     @Produces(MediaType.TEXT_XML)
@@ -63,21 +63,18 @@ public class UserServices
     public void newUser(@FormParam("id") String id, @FormParam("email") String email, @FormParam("password") String password,
     		@FormParam("identity") String identity, @Context HttpServletResponse servletResponse) throws IOException 
     {
-        User user = new User(id, email, password);
        
-        if (identity != null) 
-        {
-            user.setIdentity(identity);
-        }
-        
-        UserManager.instance.getModel().put(id, user);
+    		if ((email.equals(email)) && (password.equals(password)))
+    		{
+    			
+    		}
         
         servletResponse.sendRedirect("../users.html");
     }
 
     // Defines that the next path parameter after Users is
     // treated as a parameter and passed to the UserServices
-    // Allows to type http://localhost:8080/com.vogella.jersey.User/rest/users/1
+    // Allows to type http://localhost:8080/WebServiceProjectCinema/rest/users/1
     // 1 will be treaded as parameter User and passed to UserService
     @Path("{user}")
     public UserService getUser(@PathParam("user") String id) 
