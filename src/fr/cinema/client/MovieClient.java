@@ -13,6 +13,8 @@ import javax.ws.rs.core.UriBuilder;
 
 import org.glassfish.jersey.client.ClientConfig;
 
+import fr.cinema.client.Movie;
+
 public class MovieClient 
 {
 	public static void main(String[] args)
@@ -23,7 +25,7 @@ public class MovieClient
 
 	    // Créer un film (User)
 	    Movie movie = new Movie("1", "Suicid Squad", "2h03", "David Ayer", "Anglais", "Français", "Will Smith");
-	    Response response = service.path("rest").path("movie").path(movie.getId()).request(MediaType.APPLICATION_XML).put(Entity.entity(movie,MediaType.APPLICATION_XML),Response.class);
+	    Response response = service.path("rest").path("movies").path(movie.getId()).request(MediaType.APPLICATION_XML).put(Entity.entity(movie,MediaType.APPLICATION_XML),Response.class);
 
 	    // Return code should be 201 == created resource
 	    System.out.println(response.getStatus());
@@ -32,12 +34,12 @@ public class MovieClient
 	    System.out.println(service.path("rest").path("movies").request().accept(MediaType.TEXT_XML).get(String.class));
 
  	   	// Get JSON for application (Make sure to add the jersey-media-json-jackson dependency to add support for JSON)
-        // System.out.println(service.path("rest").path("users").request().accept(MediaType.APPLICATION_JSON).get(String.class));
+        // System.out.println(service.path("rest").path("movies").request().accept(MediaType.APPLICATION_JSON).get(String.class));
 
 	    // Get XML for application
 	    	System.out.println(service.path("rest").path("movies").request().accept(MediaType.APPLICATION_XML).get(String.class));
 
-	    //Get User with id 1
+	    //Get Movie with id 1
 	    Response checkDelete = service.path("rest").path("movies/1").request().accept(MediaType.APPLICATION_XML).get();
 
 	    // Delete User with id 1
@@ -46,10 +48,12 @@ public class MovieClient
 	    //Get get all users id 1 should be deleted
 	    System.out.println(service.path("rest").path("movies").request().accept(MediaType.APPLICATION_XML).get(String.class));
 
-        //Create a User
+        //Create a Movie
         Form form = new Form();
-        form.param("id", "karim.benzema@gmail.com");
-        form.param("benzema","Karim BENZEMA");
+        form.param("id", "Suicid Squad");
+        form.param("2h03","David Ayer");
+        form.param("Anglais","Français");
+        form.param("Will Smith", " ");
         response = service.path("rest").path("movies").request().post(Entity.entity(form,MediaType.APPLICATION_FORM_URLENCODED), Response.class);
         
         System.out.println("Form response " + response.getStatus());
@@ -59,7 +63,8 @@ public class MovieClient
 
 	  }
 
-	  private static URI getBaseURI() {
-	    return UriBuilder.fromUri("http://localhost:8080/WebServicesProjectCinema").build();
+	  private static URI getBaseURI() 
+	  {
+		  return UriBuilder.fromUri("http://localhost:8080/WebServicesProjectCinema").build();
 	  }
 }

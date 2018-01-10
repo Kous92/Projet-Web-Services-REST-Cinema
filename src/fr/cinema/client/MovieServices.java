@@ -15,7 +15,6 @@ import fr.cinema.client.MovieManager;
 @Path("/movies")
 public class MovieServices 
 {
-
 	// Allows to insert contextual objects into the class,
     // e.g. ServletContext, Request, Response, UriInfo
     @Context
@@ -28,7 +27,8 @@ public class MovieServices
     @Produces(MediaType.TEXT_XML)
     public List<Movie> getMoviesBrowser() 
     {
-        List<Movie> movies = new ArrayList<Movie>();
+
+    		List<Movie> movies = new ArrayList<Movie>();
         movies.addAll(MovieManager.instance.getModel().values());
         
         return movies;
@@ -61,10 +61,41 @@ public class MovieServices
     @Produces(MediaType.TEXT_HTML)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public void newMovie(@FormParam("id") String id, @FormParam("title") String title, @FormParam("duration") String duration, @FormParam("director") String director,
-    		@FormParam("language") String language, @FormParam("subtitles") String subtitles, @FormParam("mainActors") String mainActors
+    		@FormParam("language") String language, @FormParam("subtitles") String subtitles, @FormParam("main_actors") String mainActors
     		,@Context HttpServletResponse servletResponse) throws IOException 
     {
         Movie movie = new Movie(id, title, duration, director, language, subtitles, mainActors);
+        
+        if (title != null)
+        {
+        		movie.setTitle(title);
+        }
+        
+        if (duration != null)
+        {
+        		movie.setDuration(duration);
+        }
+        
+        if (director != null)
+        {
+        		movie.setDirector(director);
+        }
+        
+        if (language != null)
+        {
+        		movie.setLanguage(language);
+        }
+        	
+        if (subtitles != null)
+        {
+        		movie.setSubtitles(subtitles);
+        }
+        
+        if (mainActors != null)
+        {
+        		movie.setMainActors(mainActors);
+        }
+        
         MovieManager.instance.getModel().put(id, movie);
         
         servletResponse.sendRedirect("../movies.html");
@@ -72,7 +103,7 @@ public class MovieServices
 
     // Defines that the next path parameter after Users is
     // treated as a parameter and passed to the UserServices
-    // Allows to type http://localhost:8080/com.vogella.jersey.User/rest/users/1
+    // Allows to type http://localhost:8080/ProjectWebServices/rest/movies/1
     // 1 will be treaded as parameter User and passed to UserService
     @Path("{movie}")
     public MovieService getMovie(@PathParam("movie") String id) 

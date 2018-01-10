@@ -62,9 +62,9 @@ public class MovieService
 
     @PUT
     @Consumes(MediaType.APPLICATION_XML)
-    public Response putMovie(JAXBElement<Movie> movie) 
+    public Response putMovie(JAXBElement<Movie> movies) 
     {
-        Movie m = movie.getValue();
+        Movie m = movies.getValue();
         return putAndGetResponse(m);
     }
 
@@ -75,7 +75,7 @@ public class MovieService
         
         if (c == null)
         {
-        		throw new RuntimeException("DELETE: User avec " + id + " introuvable");
+        		throw new RuntimeException("DELETE: Movie avec " + id + " introuvable");
         }       
     }
 
@@ -83,7 +83,7 @@ public class MovieService
     {
         Response res;
         
-        if (UserManager.instance.getModel().containsKey(movie.getId())) 
+        if (MovieManager.instance.getModel().containsKey(movie.getId())) 
         {
             res = Response.noContent().build();
         } 

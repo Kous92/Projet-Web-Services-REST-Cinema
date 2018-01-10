@@ -1,5 +1,8 @@
 package fr.cinema.client;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Movie 
 {
     private String id;
