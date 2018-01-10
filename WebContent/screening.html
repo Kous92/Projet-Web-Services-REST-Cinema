@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<script type="text/javascript" src="date_heure.js"></script>
+<title>Projet Web Services REST</title>
+</head>
+<body>
+<header>
+		<h1>Projet Web Services Cinéma (REST)</h1>
+		
+		<div class="menu">
+			<ul>
+				<li><a href="index.html">Accueil</a></li>
+				<li><a href="movie.html" target="_blank_">Films</a></li>
+				<li><a href="screening.html" target="_blank_">Séances</a></li>
+				<li><a href="login.html" target="_blank_">Connexion</a></li>
+	   			<li class="welcome">Welcome guest</li>
+	   		</ul>
+		</div>
+</header>
+
+	<div class="login">
+	<table class="loginbox">
+		<form action="../WebServicesProjectCinema/rest/screenings" method="POST">
+			<tr>
+				<td id="name"><label for="id">ID cinéma: </label><sup id="required">*</sup></td>
+				<td id="input"><input type="text" name="id"/><br></td>
+			</tr>
+	
+			<tr>
+				<td id="name"><label for="movie_title">Nom du film: </label><sup id="required">*</sup></td>
+				<td id="input"><input type="text" name="movie_title"/><br></td>
+			</tr>
+
+			<tr>
+				<td id="name"><label for="city">Ville: <sup id="required">*</sup></label></td>
+				<td id="input"><input type="text" name="city"/></td>
+			</tr>
+
+			<tr>
+				<td id="name"><label for="start_date">Date de début: <sup id="required">*</sup></label></td>
+				<td id="input"><input type="text" name="start_date"/></td>
+			</tr>
+			
+			<tr>
+				<td id="name"><label for="end_date">Date de fin: <sup id="required">*</sup></label></td>
+				<td id="input"><input type="text" name="end_date"/></td>
+			</tr>
+			
+			<tr>
+				<td id="name"><label for="minimal_age">Âge minimal: <sup id="required">*</sup></label></td>
+				<td id="input"><input type="text" name="minimal_age"/></td>
+			</tr>
+			
+			<tr>
+				<td id="name"><label for="first_screening">Séance 1: <sup id="required">*</sup></label></td>
+				<td id="input"><input type="text" name="first_screening"/></td>
+			</tr>
+			
+			<tr>
+				<td id="name"><label for="second_screening">Séance 2: <sup id="required">*</sup></label></td>
+				<td id="input"><input type="text" name="second_screening"/></td>
+			</tr>
+			
+			<tr>
+				<td id="name"><label for="third_screening">Séance 3: <sup id="required">*</sup></label></td>
+				<td id="input"><input type="text" name="third_screening"/></td>
+			</tr>
+			<tr>
+				<td><br><input type="submit" value="Ajouter" title="Click on this button to check your identifiers and log into your account"/></td>
+				<td><br><input type="reset" value="Reset" title="Click on this button to clear the form"/></td>
+			</tr>
+		</form>
+	</table>		
+	</div>
+<footer>
+	<span id="date_heure"></span>
+    <script type="text/javascript">window.onload = date_heure('date_heure');</script>&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;
+    Copyright Koussaïla BEN MAMAR, Ibrahim EL KARRAT et Arthur SCHICKEL, Janvier 2018, tous droits réservés
+</footer>
+</body>
+</html>

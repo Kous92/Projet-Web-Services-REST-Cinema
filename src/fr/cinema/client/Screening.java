@@ -1,105 +1,128 @@
 package fr.cinema.client;
 
+import javax.xml.bind.annotation.XmlRootElement;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-import java.util.Date;
-
+@XmlRootElement
 public class Screening 
 {
-    private String ville;
-    private int filmId;
-    private int cinemaId;
-    private Date startDate;
-    private Date endDate;
+    private String city;
+    private String movieTitle;
+    private String cinemaId;
+    private String startDate;
+    private String endDate;
     private int minimumAge;
     
     //3 weekly screenings for each movie, example: "Wednesday, 15:00"
     private String firstScreening;
-
-    public String getVille() {
-		return ville;
+    private String secondScreening;
+    private String thirdScreening;
+    
+    public Screening()
+    {
+    	
+    }
+    
+    public Screening(String city, String movieTitle, String cinemaId, String startDate, String endDate, int minimumAge,
+			String firstScreening, String secondScreening, String thirdScreening) 
+    {
+		this.city = city;
+		this.movieTitle = movieTitle;
+		this.cinemaId = cinemaId;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.minimumAge = minimumAge;
+		this.firstScreening = firstScreening;
+		this.secondScreening = secondScreening;
+		this.thirdScreening = thirdScreening;
 	}
 
-	public void setVille(String ville) {
-		this.ville = ville;
+	public String getCity() 
+    {
+		return city;
 	}
 
-	public int getFilmId() 
+	public void setCity(String city) 
+	{
+		this.city = city;
+	}
+
+	public String getMovieTitle() 
     {
-        return filmId;
+        return movieTitle;
     }
 
-    public void setFilmId(int filmId) 
+    public void setMovieTitle(String movieTitle) 
     {
-        this.filmId = filmId;
+        this.movieTitle = movieTitle;
     }
 
-    public int getCinemaId() 
+    public String getCinemaId() 
     {
         return cinemaId;
     }
 
-    public void setCinemaId(int cinemaId) 
+    public void setCinemaId(String cinemaId) 
     {
         this.cinemaId = cinemaId;
     }
 
-    public Date getStartDate() 
+    public String getStartDate() 
     {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) 
+    public void setStartDate(String startDate) 
     {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() 
+    public String getEndDate() 
     {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) 
+    public void setEndDate(String endDate) 
     {
         this.endDate = endDate;
     }
 
-    public int getMinimumAge() {
+    public int getMinimumAge()
+    {
         return minimumAge;
     }
 
-    public void setMinimumAge(int minimumAge) {
+    public void setMinimumAge(int minimumAge) 
+    {
         this.minimumAge = minimumAge;
     }
 
-    public String getFirstScreening() {
+    public String getFirstScreening() 
+    {
         return firstScreening;
     }
 
-    public void setFirstScreening(String firstScreening) {
+    public void setFirstScreening(String firstScreening) 
+    {
         this.firstScreening = firstScreening;
     }
 
-    public String getSecondScreening() {
+    public String getSecondScreening() 
+    {
         return secondScreening;
     }
 
-    public void setSecondScreening(String secondScreening) {
+    public void setSecondScreening(String secondScreening) 
+    {
         this.secondScreening = secondScreening;
     }
 
-    public String getThirdScreening() {
+    public String getThirdScreening() 
+    {
         return thirdScreening;
     }
 
-    public void setThirdScreening(String thirdScreening) {
+    public void setThirdScreening(String thirdScreening) 
+    {
         this.thirdScreening = thirdScreening;
     }
-    private String secondScreening;
-    private String thirdScreening;
 }
